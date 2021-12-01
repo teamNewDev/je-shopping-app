@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping App</title>
+    <link rel="icon" href="./assets/icon-192.png">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="manifest" href="./manifest.json">
+
+    <script src="./dexie.min.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js');
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="loaderWrapper" id="loaderContainer">
+        <span class="loader">
+            <span class="loaderInner"></span>
+        </span>
+    </div>
+
+    <nav>
+        <p>
+            My Shopping list
+        </p>
+    </nav>
+
+    <div class="container">
+
+        <form id="itemForm">
+            <label>
+                Name of Item:
+                <input type="text" id="nameInput" required>
+            </label>
+
+            <label>
+                Qauntity:
+                <input type="number" id="quantityInput" value="1" required>
+            </label>
+
+            <label>
+                Price:
+                <input type="text" id="priceInput" value="0" required>
+            </label>
+
+            <button type="submit" id="addItemButton">
+                Add item
+                <span> <img src="./assets/add Icon.png" class="addIcon"></span>
+            </button>
+
+            <button type="submit" id="updateButton" class="updateBtn" style="display: none;">
+                Update Item
+                <span>
+                    <img src="./assets/new update icon.png" class="updateIcon">
+                </span>
+            </button>
+        </form>
+
+    </div>
+
+    <div id="itemsDiv"></div>
+    <div id="totalPriceDiv"></div>
+
+    <div class="clearDiv">
+        <button type="reset" class="clearAll" id="clearBtn" style="display: none;">
+            Clear items
+            <span>
+                <img src="./assets/empty-trash icon.png" class="clearAllIcon">
+            </span>
+        </button>
+    </div>
+
+    <div class="emptyShoppingList" id="emptyShopppingItem" style="display: none;">
+        <img src="./assets/undraw_empty_cart_co35.svg">
+        <div class="emptyListText">
+            <h3>
+                Your List is Empty
+            </h3>
+
+            <p>
+                Create list of items for an easier Shopping Experience
+            </p>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
