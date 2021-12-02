@@ -56,8 +56,6 @@
             price: document.querySelector('#priceInput').value
 
         }).then(async updated => {
-            console.log(updated);
-
             if (updated) {
                 await populateItemsDiv();
                 itemForm.reset();
@@ -86,7 +84,7 @@
         await populateItemsDiv();
 
     }
-     
+
     // Form contents
     populateItemsDiv = async () => {
         const allItems = await db.items.reverse().toArray();
@@ -130,12 +128,10 @@
 
     // editing item
     editClickedItem = (id) => {
-        console.log(id);
 
         db.open().then(async db => {
             return await db.items.where('id').equals(id).toArray();
         }).then(item => {
-            console.log(item);
 
             document.querySelector('#nameInput').value = item[0].name;
             document.querySelector('#quantityInput').value = parseInt(item[0].quantity);
@@ -148,4 +144,4 @@
 
     pageLoad();
 
-})(); 
+})();
